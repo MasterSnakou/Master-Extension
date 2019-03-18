@@ -1,0 +1,19 @@
+{
+	"name": "master-extension",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"src",
+		"lib",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"jquery": "^3.1.0",
+		"bootstrap": "^3.3.6",
+		"jquery.countdown": "^2.1.0",
+		"socket.io-client": "^1.4.8"
+	}
+}
