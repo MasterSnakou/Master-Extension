@@ -75,7 +75,7 @@ $(document).ready(function(){
 		if(live == 0)
 		{
 			/*Récupération du countdown sur le site*/
-			$.get("http://mastersnakou.fr/", function (data) {
+			$.get("https://snakou.fr/", function (data) {
 	
 				var i = data.indexOf('streamDate =');
 				var streamDate = data.substr(i + 14, 19);

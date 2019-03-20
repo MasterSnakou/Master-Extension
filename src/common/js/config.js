@@ -2,13 +2,14 @@
 ************************************************/
 
 channel             = "MasterSnakou";					//chaîne twitch
+channelName			= "Snakou";							// Display name
 Youtube_channel_ID	=	"UCOhP0t6arWMXqmcroJjMJ7A";		//Youtube ID
 
 //Icône et texte de la barre d'état du navigateur
 LiveOn			    = "images/LiveOn.png";  			//Icône lorsque le live est lancé
-messageLiveOn	    = channel + " - LIVE!"; 			//Texte lorsque le live est lancé
+messageLiveOn	    = channelName + " - LIVE!"; 			//Texte lorsque le live est lancé
 LiveOff			    = "images/icon128.png"; 			//Icône lorsque le live est off
-messageLiveOff	    = channel;             				//Texte le live est off
+messageLiveOff	    = channelName;             				//Texte le live est off
 
 blacklistGame 		= ['Talk Shows', 'Just Chatting'] ; //Liste des jeux que l'on ne souhaite pas notifier lorsqu'ils apparaissent
 
@@ -20,7 +21,7 @@ blacklistGame 		= ['Talk Shows', 'Just Chatting'] ; //Liste des jeux que l'on ne
 
 
 //Titre de notification général (utilisé pour notifié le live et les changements de jeu)
-title 	    	    = channel + " - Je suis en live !"; 
+title 	    	    = channelName + " - Je suis en live !";
 
 //Notification Live
 messageLive     	= "Retrouvez moi en live dès maintenant sur ";
@@ -33,17 +34,17 @@ GameIconUrl		    = "/images/goty.png";
 notifsoundGame		= "../mp3/game.mp3";
 
 //Notification de vidéo youtube
-titleYT             = channel + " - Nouvelle vidéo !";
+titleYT             = channelName + " - Nouvelle vidéo !";
 VideoIconUrl	    = "/images/omg.png";
 notifsoundYT 		= "../mp3/youtube.mp3";
 
 //Notification de changement d'options
-titleOptions	    = channel + " - Enregistré !";
+titleOptions	    = channelName + " - Enregistré !";
 messageOptions	    = "Vos changements d'options ont bien été pris en compte !";
 OptionsIconUrl	    = "/images/shtlf.png";
 
 //Notification de date de resub (prime)
-titleRS             = channel + " - Jour de resub !";
+titleRS             = channelName + " - Jour de resub !";
 messageRS           = "N'oublie pas de te resub !";
 iconRS              = "/images/rs.png";
 notifsoundRS		= "../mp3/youtube.mp3";
@@ -55,7 +56,7 @@ notifsoundRS		= "../mp3/youtube.mp3";
 //Messages
 ViewersText         = " viewers";
 SnapText            = "Mon snap : mastersnakou";
-TsText              = "TeamSpeak : barbus.mastersnakou.fr";
+TsText              = "TeamSpeak : barbus.snakou.fr";
 GameToolTip         = "En live sur ";
 
 //Images de la popup
@@ -69,7 +70,7 @@ QRCodeUrl           = "/images/qrcode.jpg";
  */
 
 //Liste des sites vers lequel l'utilisateur peut choisir d'être redirigé pour regarder le live
-urls                = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
+urls                = ["https://www.twitch.tv/", "https://multitwitch.tv/", "https://speedrun.tv/", "https://kadgar.net/live/"];
 
 
 /**

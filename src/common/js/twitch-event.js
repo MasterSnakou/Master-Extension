@@ -1,5 +1,5 @@
 var favicon_link_html = document.createElement('link');
-favicon_link_html.href = 'https://mastersnakou.fr/theme/frontend/img/favicon.png';
+favicon_link_html.href = 'https://snakou.fr/theme/frontend/img/favicon.png';
 favicon_link_html.rel = 'shortcut icon';
 
 try { 
