@@ -311,28 +311,26 @@ function check_stream() {
 }
 
 /**
- * Teste le statut des vidéos youtube et lance des notifications si besoin
+ * Test le statut des vidéos youtube et lance des notifications si besoin
  */
 function checkNewVideos() {
 	
 	chrome.storage.local.get(['yt_time'], function(result){
-		var lastTime = null;
-		if(result.yt_time)
-			lastTime = new Date(result.yt_time);
-		
-		var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId="+Youtube_channel_ID+"&order=date&key="+API_key_youtube+"&maxResults=1"+(lastTime?("&publishedAfter="+lastTime.toISOString()):"");
+		var lastTime = result.yt_time ? new Date(result.yt_time) : new Date();
+
+		// Youtube API is broken since 2015 so don't use it
+		var url = "https://storage.mastersnakou.fr/services/mobile/timeline.json";
 
 		fetch(url)
 			.then(function(response){
-				if(response.status == 200){
-					response.json().then(function(data){
-						if(data.items.length > 0) {
-							var tmp = data.items[0].snippet.publishedAt;
-							var d = new Date(tmp);
-							d.setTime(d.getTime()+1000);
-							chrome.storage.local.set({'yt_time': d.toISOString()}, function(){});
-							for (var video of data.items) {
-								LaunchNotifYouTube(video.snippet.title, video.id.videoId);
+				if(response.status === 200){
+					chrome.storage.local.set({'yt_time': new Date().toISOString()}, function(){});
+					response.json().then(function(timeline){
+						for (var i = 0, length = timeline.data.length; i < length; i++) {
+							var item = timeline.data[i];
+							if (item.title !== "Youtube" && item.title !== "Youtube Replay") continue;
+							if (new Date(item.time) > lastTime) {
+								LaunchNotifYouTube(item.description, /v=(.*)&?/.exec(item.link)[1]);
 							}
 						}
 					});

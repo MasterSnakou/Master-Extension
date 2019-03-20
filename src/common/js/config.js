@@ -3,7 +3,6 @@
 
 channel             = "MasterSnakou";					//chaîne twitch
 channelName			= "Snakou";							// Display name
-Youtube_channel_ID	=	"UCOhP0t6arWMXqmcroJjMJ7A";		//Youtube ID
 
 //Icône et texte de la barre d'état du navigateur
 LiveOn			    = "images/LiveOn.png";  			//Icône lorsque le live est lancé
@@ -78,4 +77,3 @@ urls                = ["https://www.twitch.tv/", "https://multitwitch.tv/", "htt
  */
 
 API_key_twitch     = "1low3gl5nz7ep5o•••••••••••••••••";
-API_key_youtube    = "AIzaSyAANw33DQW•••••••••••••••••";
