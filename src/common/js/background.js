@@ -295,6 +295,7 @@ function check_stream() {
 							chrome.browserAction.setIcon({path: LiveOff});
 							chrome.browserAction.setTitle({title : messageLiveOff});
 							live = 0;
+							lastGameChange = null;
 						}	
 						off += 1;	
 					}
