@@ -3,7 +3,7 @@
 
 domain = "https://game.mastersnakou.fr";
 apidomain = "https://wapi.wizebot.tv/api/mastersnakou";
-twitch = ""
+twitch = "https://api.twitch.tv/helix/users?login=";
 
 img = null;
 snap = false;
@@ -64,7 +64,7 @@ function toggleSnap()
 //On attend le chargement de la poup
 $(document).ready(function(){
 
-	chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title', 'lastGameChange', ''], function(result){
+	chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title', 'lastGameChange'], function(result){
 		/*On récupère les informations sur le statut du live*/
 		live = setBool(result.living, 0);	
 	
@@ -73,29 +73,8 @@ $(document).ready(function(){
 		$("#channel_link").attr("href", result.baseurl + channel.toLowerCase());
 		$("#game_link").attr("href", result.baseurl + channel.toLowerCase());
 	
-		/*Si le live est off*/
-		if(live == 0)
-		{
-			/*Récupération du countdown sur le site*/
-			/*$.get("https://snakou.fr/", function (data) {
-	
-				var i = data.indexOf('streamDate =');
-				var streamDate = data.substr(i + 14, 19);
-				
-				if (streamDate.length == 0 || new Date(streamDate) < new Date()) {
-						$('#live').hide();
-				} else {
-					//intégration du countdown dans la popup
-					$("#getting-started")
-						.countdown(streamDate, function (event) {
-							$(this).text(
-								event.strftime('%Dj %Hh %Mm %Ss')
-							);
-						});
-				}
-			});*/
-		}
-		else /*Si le live est lancé*/
+		/*Si le live est lancé*/
+		if(live == 1)
 		{
 			if(result.lastGameChange != null){
 				$("#game_uptime").text(uptime(result.lastGameChange, "Depuis : "));
@@ -109,8 +88,6 @@ $(document).ready(function(){
 			/*On modifie l'image de la popup*/
 			$('#brand-logo-channel').attr("src", LiveIconUrlPopup);
 			/*On change le texte de la popup*/
-			//$('#live').empty();
-			//$('#live').css('color', '#CF0202');
 			$('#viewersCount').html('<span id="live-icon">Live</span>'+result.viewers + ViewersText);
 			var uptimeText = uptime(result.time);
 			$('#uptime').text(uptimeText);
@@ -160,7 +137,7 @@ $(document).ready(function(){
 			if(tab['username'] != null && tab['username'] != "") {
 				$.getJSON(domain + "/player/" + tab['username'], function (data) {
 					player = data['player'];
-					 var url = "https://api.twitch.tv/helix/users?login=" + tab['username'];
+					 var url = twitch + tab['username'];
 	
 					var myHeaders = new Headers();
 					myHeaders.append('Client-ID', API_key_twitch);
