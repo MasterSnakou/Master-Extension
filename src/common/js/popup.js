@@ -2,6 +2,8 @@
 ************************************************/
 
 domain = "https://game.mastersnakou.fr";
+apidomain = "https://wapi.wizebot.tv/api/mastersnakou";
+twitch = ""
 
 img = null;
 snap = false;
@@ -62,7 +64,7 @@ function toggleSnap()
 //On attend le chargement de la poup
 $(document).ready(function(){
 
-	chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title', 'lastGameChange'], function(result){
+	chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title', 'lastGameChange', ''], function(result){
 		/*On récupère les informations sur le statut du live*/
 		live = setBool(result.living, 0);	
 	
@@ -75,7 +77,7 @@ $(document).ready(function(){
 		if(live == 0)
 		{
 			/*Récupération du countdown sur le site*/
-			$.get("https://snakou.fr/", function (data) {
+			/*$.get("https://snakou.fr/", function (data) {
 	
 				var i = data.indexOf('streamDate =');
 				var streamDate = data.substr(i + 14, 19);
@@ -83,7 +85,7 @@ $(document).ready(function(){
 				if (streamDate.length == 0 || new Date(streamDate) < new Date()) {
 						$('#live').hide();
 				} else {
-					/*intégration du countdown dans la popup*/
+					//intégration du countdown dans la popup
 					$("#getting-started")
 						.countdown(streamDate, function (event) {
 							$(this).text(
@@ -91,7 +93,7 @@ $(document).ready(function(){
 							);
 						});
 				}
-			});
+			});*/
 		}
 		else /*Si le live est lancé*/
 		{
@@ -107,8 +109,8 @@ $(document).ready(function(){
 			/*On modifie l'image de la popup*/
 			$('#brand-logo-channel').attr("src", LiveIconUrlPopup);
 			/*On change le texte de la popup*/
-			$('#live').empty();
-			$('#live').css('color', '#CF0202');
+			//$('#live').empty();
+			//$('#live').css('color', '#CF0202');
 			$('#viewersCount').html('<span id="live-icon">Live</span>'+result.viewers + ViewersText);
 			var uptimeText = uptime(result.time);
 			$('#uptime').text(uptimeText);
@@ -121,33 +123,75 @@ $(document).ready(function(){
 		$('#live').fadeIn(1000);
 	});
 
-	/*"Fonctions" présentes de base : récupération du pseudo twitch depuis la mémoire, récupération de l'xp du mastergame, affichage*/
 	var get_username = function (callback) {
-		chrome.storage.local.get('username', function (items) {
-			callback(items['username']);
+		chrome.storage.local.get(['username', 'userid', 'displayName', 'logo'], function (items) {
+			callback(items);
 		})
 	};
 
 	var show_player = (player) => {
 		$('#player-name').text(player['display_name']);
 		$('#player-logo').attr("src", player['logo']);
-		$('#player-xp').text('Exp. ' + player['remaining_xp'] + '/' + player['lvl_xp']);
 		$('#player-lvl').text('Niv. ' + player['lvl']);
-	//Inutile car non affiché !
-		/*$('#progress-bar').css('width', function () {
-			return Math.floor(player['remaining_xp'] / player['lvl_xp'] * 100)
-		});*/
 		$('#player').fadeIn(1000);
 	};
 
-	get_username(function (username) {
-		if (username != null && username != "") {
-			$.getJSON(domain + "/player/" + username, function (data) {
+	var show_points = function(donnees){
+		$.getJSON(apidomain + "/" + donnees['userid']  + "/user_infos", function(data){
+				infos = data['infos'];
+				$('#player-name').text(donnees['displayName']);
+				$('#player-lvl').text("Points : " + infos['pts_total']);
+				$('#player-logo').attr("src", donnees['logo']);
+				$('#player').fadeIn(1000);
+			})
+	};
+	
+	get_username(function (tab) {
+		if (tab['userid'] != null && tab['userid'] != "") {
+			/*$.getJSON(domain + "/player/" + tab, function (data) {
 				player = data['player'];
 				show_player(player);
-			})
+			})*/
+			
+			show_points(tab);
+				
 		} else {
-			$('#login').fadeIn(0);
+			
+			if(tab['username'] != null && tab['username'] != "") {
+				$.getJSON(domain + "/player/" + tab['username'], function (data) {
+					player = data['player'];
+					 var url = "https://api.twitch.tv/helix/users?login=" + tab['username'];
+	
+					var myHeaders = new Headers();
+					myHeaders.append('Client-ID', API_key_twitch);
+					var myInit = { method: 'GET',
+							   headers: myHeaders,
+							   mode: 'cors',
+							   cache: 'default' };
+					
+					fetch(url, myInit)
+						.then(function(response){
+							response.json().then(function(data){
+								var data = data.data[0];
+
+								var donnees = new Array();
+								donnees['userid'] = data.id;
+								donnees['logo'] = data.profile_image_url;
+								donnees['displayName'] = data.display_name;
+
+								show_points(donnees);
+								chrome.storage.local.set({'logo': data.profile_image_url, 'displayName': data.display_name, 'userid': data.id}, function(){});
+							});
+							//show_player(player);
+						})
+						.catch(function(error){
+							console.error(error);
+						});
+				});
+			}
+			else {
+				$('#login').fadeIn(0);
+			}
 		}
 	});
 
