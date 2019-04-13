@@ -1,5 +1,5 @@
 
 Quelques idées :
-* extension pour microsoft edge
-* version Firefox
+* gestion onglet intelligente edge
 * son notif réglable ?
+

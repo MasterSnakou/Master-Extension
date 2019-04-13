@@ -8,7 +8,6 @@ var del = require('del');
     CHROME
 */
 
-
 gulp.task('clean:chrome', function(){
 	return del(['build/chrome']);
 });
@@ -127,6 +126,49 @@ gulp.task('package:opera', function(){
 });
 
 
+/*
+    EDGE
+*/
+
+gulp.task('clean:edge', function(){
+	return del(['build/edge']);
+});
+
+gulp.task('copy:edge', function(){
+	return gulp
+		.src([
+			'src/edge/**'
+		])
+		.pipe(gulp.dest('build/edge'));
+});
+
+gulp.task('build:edge', function(){
+	return gulp
+		.src([
+			'src/common/**'
+		])
+		.pipe(gulp.dest('build/edge'));
+});
+
+gulp.task('compress:edge', function(){
+	var version = JSON.parse(fs.readFileSync("package.json")).version;
+	return gulp.src('build/edge/**')
+		.pipe(zip('master-extension-edge-' + version + '.xpi'))
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('package:edge', function(){
+	runSequence(
+		'clean:edge',
+		'build:edge',
+		'copy:edge',
+		'compress:edge'
+	);
+});
+
+
+
+
 
 gulp.task('clean:dist', function(){
 	return del(['dist/**']);
@@ -138,7 +180,7 @@ gulp.task('clean:dist', function(){
 gulp.task('package:all', function(){
 	runSequence(
 		'clean:dist',
-		['package:chrome', 'package:firefox', 'package:opera']
+		['package:chrome', 'package:firefox', 'package:opera', 'package:edge']
 	);
 });
 
@@ -146,8 +188,9 @@ gulp.task('package:all', function(){
     WATCH
 */
 gulp.task('watch', function(){
-	gulp.watch('common/**', ['package:chrome', 'package:firefox', 'package:opera']);
+	gulp.watch('common/**', ['package:chrome', 'package:firefox', 'package:opera', 'package:edge']);
 	gulp.watch('chrome/**', ['package:chrome']);
 	gulp.watch('firefox/**', ['package:firefox']);
 	gulp.watch('opera/**', ['package:opera']);
+	gulp.watch('edge/**', ['package:edge']);
 });
