@@ -5,6 +5,7 @@
 - `gulp package:chrome` Package the chrome extension and places it in the `dist` directory.
 - `gulp package:firefox` Same for Firefox.
 - `gulp package:opera` Same for Opera.
+- `gulp package:edge` Same for Microsoft Edge.
 - `gulp package:all` Runs the three tasks above. 
 
 ## Screenshots
