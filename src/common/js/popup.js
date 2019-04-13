@@ -117,7 +117,7 @@ $(document).ready(function(){
 		$.getJSON(apidomain + "/" + donnees['userid']  + "/user_infos", function(data){
 				infos = data['infos'];
 				$('#player-name').text(donnees['displayName']);
-				$('#player-lvl').text("Points : " + infos['pts_total']);
+				$('#player-lvl').text("Points : " + (infos['pts_total'] ? infos['pts_total'] : 0));
 				$('#player-logo').attr("src", donnees['logo']);
 				$('#player').fadeIn(1000);
 			})

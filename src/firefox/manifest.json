@@ -9,6 +9,9 @@
 	},
 	"background": {
 		"scripts": [
+			"js/config.js",
+			"libs/jquery/dist/jquery.min.js",
+			"js/fonctions.js",
 			"js/background.js"
 		]
 	},

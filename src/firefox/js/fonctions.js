@@ -4,12 +4,11 @@
  * @param {boolean} value variable inconnue
  * @param {boolean} defaultValue valeur par défaut du booléen
  */
-function setBool(value, defaultVal)
-{
+function setBool(value, defaultVal) {
 	var bool = [0, 1];
 	var res = value;
-	
-	if (bool.indexOf(value) == -1){
+
+	if (bool.indexOf(value) == -1) {
 		res = defaultVal;
 	}
 	return res;
@@ -19,10 +18,10 @@ function setBool(value, defaultVal)
  * Vérifie que la variable 'url' est bien définie dans la liste de la configuration et retourne twitch par défaut
  * @param {string} url Lien vers la page pour regarder le stream 
  */
-function setUrlRedirect(url){
+function setUrlRedirect(url) {
 	var res = url;
 
-	if (urls.indexOf(res) == -1){
+	if (urls.indexOf(res) == -1) {
 		res = "https://www.twitch.tv/";
 	}
 
@@ -33,11 +32,11 @@ function setUrlRedirect(url){
 * Renvoie la différence en jour entre une date et aujourd'hui
 * @param {Date} dateSub Date de resub
 */
-function getdiffJour(dateSub){
+function getdiffJour(dateSub) {
 	var today = new Date(Date.now());
-	var diff=today.getTime() - dateSub.getTime();
-	
-	return Math.floor(diff/86400000);
+	var diff = today.getTime() - dateSub.getTime();
+
+	return Math.floor(diff / 86400000);
 }
 
 /**
@@ -45,23 +44,29 @@ function getdiffJour(dateSub){
  * @param {string} elem élément jquery (classe ou id CSS)
  * @param {boolean} url si true elem est une url de type string
  */
-function manageTabs(elem, url=false)
-{
+function manageTabs(elem, url = false) {
 	var redirectURL = url ? elem : $(elem).attr("href");
 
-	var querying = browser.tabs.query({currentWindow: true, active: true});
-	querying.then(function(tabs){
-		if(tabs[0].url == "about:newtab")
-		{
-			var updating = browser.tabs.update({url: redirectURL});
+	var querying = browser.tabs.query({ currentWindow: true, active: true });
+	querying.then(function (tabs) {
+		if (tabs[0].url == "about:newtab") {
+			var updating = browser.tabs.update({ url: redirectURL });
 			updating.then(onUpdated, onError);
-		}else{
+		} else {
 			var creating = browser.tabs.create({
-				url:redirectURL
+				url: redirectURL
 			});
 			creating.then(onUpdated, onError);
 		}
 		window.close();
 	}, onError);
 
+}
+
+function onUpdated(tab) {
+	console.log(`Updated tab: ${tab.id}`);
+}
+
+function onError(error) {
+	console.log(`Error: ${error}`);
 }
