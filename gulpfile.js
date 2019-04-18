@@ -194,3 +194,5 @@ gulp.task('watch', function(){
 	gulp.watch('opera/**', ['package:opera']);
 	gulp.watch('edge/**', ['package:edge']);
 });
+
+gulp.task('default', ['package:all']);

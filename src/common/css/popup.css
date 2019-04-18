@@ -102,6 +102,10 @@ td{
 	display:none;
 }
 
+.center {
+    margin: auto;
+}
+
 #player-logo{
 	width:35px; border:2px solid #FFF;
 }
