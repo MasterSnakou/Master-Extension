@@ -101,17 +101,28 @@ function LaunchNotif()
 
 /**
  * Récupère les paramètres de l'utilisateur et appelle la fonction notifYouTube() pour notifier d'une sortie de vidéo.
+ * @param {string} type type de la vidéo (replay ou non)
  * @param {string} title titre de la vidéo
  * @param {string} id id de la vidéo
  */
-function LaunchNotifYouTube(title, id)
+function LaunchNotifYouTube(type, title, id)
 {
-	chrome.storage.local.get(['youtubenotif', 'songyt'], function(result){
+	chrome.storage.local.get(['mainyoutubenotif', 'replayyoutubenotif', 'mainsongyt', 'replaysongyt'], function(result){
 	
-		result.youtubenotif = setBool(result.youtubenotif, 1);
-		result.songyt = setBool(result.songyt, 1);
+		result.mainyoutubenotif = setBool(result.mainyoutubenotif, 1);
+		result.replayyoutubenotif = setBool(result.replayyoutubenotif, 1);
+		result.mainsongyt = setBool(result.mainsongyt, 1);
+		result.replaysongyt = setBool(result.replaysongyt, 1);
 		
-		notifYouTube(title, id, [result.youtubenotif, result.songyt]);
+		var allowSong = result.mainsongyt;
+		var allowNotif = result.mainyoutubenotif;
+
+		if(type === "Youtube Replay"){
+			allowSong = result.replaysongyt;
+			allowNotif = result.replayyoutubenotif;
+		}
+
+		notifYouTube(title, id, [allowNotif, allowSong]);
 	});
 }
 
@@ -331,7 +342,7 @@ function checkNewVideos() {
 							var item = timeline.data[i];
 							if (item.title !== "Youtube" && item.title !== "Youtube Replay") continue;
 							if (new Date(item.time) > lastTime) {
-								LaunchNotifYouTube(item.description, /v=(.*)&?/.exec(item.link)[1]);
+								LaunchNotifYouTube(item.title, item.description, /v=(.*)&?/.exec(item.link)[1]);
 							}
 						}
 					});

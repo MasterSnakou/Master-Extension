@@ -36,6 +36,8 @@ function checkAble()
 	disableIt($('#songG'), $('#songGC'), !$('#notifGC').is(':checked'));
 	
 	disableIt($('#songV'), $('#songVC'), !$('#notifVC').is(':checked'));
+
+	disableIt($('#songVR'), $('#songVRC'), !$('#notifVRC').is(':checked'));
 }
 
 /**
@@ -104,9 +106,7 @@ function checkIt(elem, bool)
  */
 function restaurerLesOptions()
 {
-	chrome.storage.local.get(['baseurl', 'notif', 'song', 'gamechange', 'songGame', 'youtubenotif', 'songyt', 'RSnotif', 'dateRS', 'RSnotified'], function(result){
-		
-		console.log(result);
+	chrome.storage.local.get(['baseurl', 'notif', 'song', 'gamechange', 'songGame', 'mainyoutubenotif', 'replayyoutubenotif', 'mainsongyt', 'replaysongyt', 'RSnotif', 'dateRS', 'RSnotified'], function(result){
 		
 		var elem;
 		
@@ -126,16 +126,24 @@ function restaurerLesOptions()
 		result.songGame = setBool(result.songGame, 0);
 		checkIt(elem, (result.songGame==1));
 		
-		elem = $('#songV');
-		result.youtubenotif = setBool(result.youtubenotif, 1);
-		checkIt(elem, (result.youtubenotif==1));
+		elem = $('#notifV');
+		result.mainyoutubenotif = setBool(result.mainyoutubenotif, 1);
+		checkIt(elem, (result.mainyoutubenotif==1));
 		
 		elem = $('#songV');
-		result.songyt = setBool(result.songyt, 1);
-		checkIt(elem, (result.songyt==1));
+		result.mainsongyt = setBool(result.mainsongyt, 1);
+		checkIt(elem, (result.mainsongyt==1));
+
+		elem = $('#notifVR');
+		result.replayyoutubenotif = setBool(result.replayyoutubenotif, 1);
+		checkIt(elem, (result.replayyoutubenotif==1));
+		
+		elem = $('#songVR');
+		result.replaysongyt = setBool(result.replaysongyt, 1);
+		checkIt(elem, (result.replaysongyt==1));
 		
 		result.RSnotif = setBool(result.RSnotif, 1);
-		checkIt(elem, (result.songyt==1));
+		checkIt(elem, (result.RSnotif==1));
 		
 		result.dateRS = (result.dateRS != null ? result.dateRS : "");
 		$('#resubRSC').val(result.dateRS);
@@ -171,6 +179,8 @@ function enregistrer()
 	var songG = ($('#songGC').is(':checked'))? 1: 0;
 	var notifV = ($('#notifVC').is(':checked'))? 1: 0;
 	var songV = ($('#songVC').is(':checked'))? 1: 0;
+	var notifVR = ($('#notifVRC').is(':checked'))? 1: 0;
+	var songVR = ($('#songVRC').is(':checked'))? 1: 0;
 	var notifRS = ($('#notifRSC').is(':checked'))? 1: 0;
 	var dateRS = $('#resubRSC').val();
 	
@@ -187,8 +197,10 @@ function enregistrer()
 		'song': songL, 
 		'gamechange': notifG, 
 		'songGame': songG, 
-		'youtubenotif': notifV, 
-		'songyt': songV,
+		'mainyoutubenotif': notifV, 
+		'mainsongyt': songV,
+		'replayyoutubenotif' : notifVR,
+		'replaysongyt' : songVR,
 		'RSnotif': notifRS,
 		'dateRS': dateRS,
 		'ecartMoisRS': ecartMois,
