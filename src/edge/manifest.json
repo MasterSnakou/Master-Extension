@@ -1,6 +1,6 @@
 {
     "author": "Snakou",
-    "version": "2.5.2",
+    "version": "2.5.0",
     "background": {
         "page": "background.html",
         "persistent": true
