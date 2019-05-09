@@ -1,6 +1,6 @@
 {
 	"name": "master-extension",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"description": "Ne rate plus aucun live ni aucune vidéo avec la Master Extension !",
 	"main": "gulpfile.js",
 	"devDependencies": {
