@@ -139,7 +139,7 @@ $(document).ready(function () {
 					fetch(url, myInit)
 						.then(function (response) {
 							response.json().then(function (data) {
-								var data = data.data[0];
+								data = data.data[0];
 
 								var donnees = new Array();
 								donnees['userid'] = data.id;

@@ -133,28 +133,24 @@ function LaunchNotifYouTube(type, title, id)
 function analyze(data)
 {
 	/*Construction de la structure de retour*/
-	var stream_data= new Array();
+	var stream_data= [];
 
 	/*Si la requête a retournée des données*/
 	if(!data)
 	{
 		stream_data[0] = "error";
 	}
-	else if(!data.stream) /*Si le live n'est pas lancé*/
+	else if(!data.started_at) /*Si le live n'est pas lancé*/
 	{
 		stream_data[0] = "offline";
 	}
-	else if(data.stream._id) /*Si le live est ON*/
+	else /*Si le live est ON*/
 	{
 		/*Sauvegarde du timestamp et du jeu actuel*/
-		stream_data[0]=data.stream.created_at;
-		stream_data[1]= data.stream.game;
-		stream_data[2]= data.stream.viewers;
-		stream_data[3]= data.stream.channel.status;
-	}
-	else
-	{
-		stream_data[0] = "error";
+		stream_data[0]= data.started_at;
+		stream_data[1]= data.game_name || '';
+		stream_data[2]= data.viewer_count;
+		stream_data[3]= data.title;
 	}
 	
 	return stream_data;
@@ -259,32 +255,26 @@ function LaunchGameNotif(opt){
  * Teste le statut du stream et appelle LaunchNotif() si besoin
  */
 function check_stream() {
-	
-	/*Lancement de la requête à l'API*/
-    var url = "https://api.twitch.tv/kraken/streams/" + channel;
-	
-	var myHeaders = new Headers();
-	myHeaders.append('Client-ID', API_key_twitch);
+	var url = "https://storage.mastersnakou.fr/services/mobile/stream_status.json";
+
 	var myInit = { method: 'GET',
-               headers: myHeaders,
-               mode: 'cors',
                cache: 'default' };
-	
+
 	fetch(url, myInit)
 		.then(function(response){
-			if(response.status == 200){
+			if(response.status === 200){
 				response.json().then(function(data){
 					var tmp = analyze(data);
-		
+
 					game_tmp = tmp[1];
 					var created_at = tmp[0];
-					
+
 					/*Si le live est lancé*/
-					if(created_at != "offline" && created_at != "error")
+					if(created_at !== "offline" && created_at !== "error")
 					{
 							manageGameNotif(game, game_tmp);
 							game = game_tmp;
-							if(created_at != stream)
+							if(created_at !== stream)
 							{
 								/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
 								stream = created_at;
@@ -297,7 +287,7 @@ function check_stream() {
 							off = 0;
 							live = 1;
 					}
-					else if (created_at == "offline")
+					else if (created_at === "offline")
 					{
 						/*L'API twitch renvoyant des erreurs assez fréquemment, la détection du statut OFF se fait au bout de 2 retours négatifs de l'API*/
 						if(off == 5 && live == 1)
@@ -412,8 +402,8 @@ function checkReSubDate(){
 /*	Programme principal
 *************************************************/
 
-//Répétition de check_stream() toutes les 15 secondes
-setInterval(check_stream,15000);
+//Répétition de check_stream() toutes les 30 secondes
+setInterval(check_stream,30000);
 check_stream();
 
 //Répétition de checkNewVideos() toutes les minutes
