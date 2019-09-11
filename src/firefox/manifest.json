@@ -10,7 +10,7 @@
 	"background": {
 		"scripts": [
 			"js/config.js",
-			"libs/jquery/dist/jquery.min.js",
+			"libs/jquery.min.js",
 			"js/fonctions.js",
 			"js/background.js"
 		]
@@ -38,7 +38,7 @@
 				"https://game.mastersnakou.fr/"
 			],
 			"js": [
-				"libs/jquery/dist/jquery.min.js",
+				"libs/jquery.min.js",
 				"js/username-grabber.js"
 			]
 		},
@@ -48,8 +48,8 @@
 				"https://www.twitch.tv/mastersnakou"
 			],
 			"js": [
-				"libs/jquery/dist/jquery.min.js",
-				"libs/socket.io-client/dist/socket.io.js",
+				"libs/jquery.min.js",
+				"libs/socket.io.min.js",
 				"js/twitch-event.js"
 			],
 			"css": [

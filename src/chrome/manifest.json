@@ -5,7 +5,7 @@
 	"background": {
 		"scripts": [
 			"js/config.js",
-			"libs/jquery/dist/jquery.min.js",
+			"libs/jquery.min.js",
 			"js/fonctions.js",
 			"js/background.js"
 		]
@@ -19,7 +19,7 @@
 	"content_scripts": [
 		{
 			"js": [
-				"libs/jquery/dist/jquery.min.js",
+				"libs/jquery.min.js",
 				"js/username-grabber.js"
 			],
 			"matches": [
@@ -31,8 +31,8 @@
 				"css/twitch-event.css"
 			],
 			"js": [
-				"libs/jquery/dist/jquery.min.js",
-				"libs/socket.io-client/dist/socket.io.js",
+				"libs/jquery.min.js",
+				"libs/socket.io.min.js",
 				"js/twitch-event.js"
 			],
 			"matches": [

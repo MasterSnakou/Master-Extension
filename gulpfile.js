@@ -4,6 +4,17 @@ var fs = require('fs');
 var zip = require('gulp-zip');
 var del = require('del');
 
+gulp.task('prepare:libs', function(){
+	return gulp
+		.src([
+			'libs/jquery/dist/jquery.min.js',
+			'libs/socket.io-client/dist/socket.io.min.js',
+			'libs/jquery.countdown/dist/jquery.countdown.min.js',
+			'libs/bootstrap/dist/css/bootstrap.min.css'
+		])
+		.pipe(gulp.dest('build/libs/libs'));
+});
+
 /*
     CHROME
 */
@@ -23,7 +34,8 @@ gulp.task('copy:chrome', function(){
 gulp.task('build:chrome', function(){
 	return gulp
 		.src([
-			'src/common/**'
+			'src/common/**',
+			'build/libs/**'
 		])
 		.pipe(gulp.dest('build/chrome'));
 });
@@ -38,6 +50,7 @@ gulp.task('compress:chrome', function(){
 gulp.task('package:chrome', function(){
 	runSequence(
 		'clean:chrome',
+		'prepare:libs',
 		'build:chrome',
 		'copy:chrome',
 		'compress:chrome'
@@ -63,7 +76,8 @@ gulp.task('copy:firefox', function(){
 gulp.task('build:firefox', function(){
 	return gulp
 		.src([
-			'src/common/**'
+			'src/common/**',
+			'build/libs/**'
 		])
 		.pipe(gulp.dest('build/firefox'));
 });
@@ -78,6 +92,7 @@ gulp.task('compress:firefox', function(){
 gulp.task('package:firefox', function(){
 	runSequence(
 		'clean:firefox',
+		'prepare:libs',
 		'build:firefox',
 		'copy:firefox',
 		'compress:firefox'
@@ -104,7 +119,8 @@ gulp.task('copy:opera', function(){
 gulp.task('build:opera', function(){
 	return gulp
 		.src([
-			'src/common/**'
+			'src/common/**',
+			'build/libs/**'
 		])
 		.pipe(gulp.dest('build/opera'));
 });
@@ -119,6 +135,7 @@ gulp.task('compress:opera', function(){
 gulp.task('package:opera', function(){
 	runSequence(
 		'clean:opera',
+		'prepare:libs',
 		'build:opera',
 		'copy:opera',
 		'compress:opera'
@@ -145,7 +162,8 @@ gulp.task('copy:edge', function(){
 gulp.task('build:edge', function(){
 	return gulp
 		.src([
-			'src/common/**'
+			'src/common/**',
+			'build/libs/**'
 		])
 		.pipe(gulp.dest('build/edge'));
 });
@@ -160,6 +178,7 @@ gulp.task('compress:edge', function(){
 gulp.task('package:edge', function(){
 	runSequence(
 		'clean:edge',
+		'prepare:libs',
 		'build:edge',
 		'copy:edge',
 		'compress:edge'
