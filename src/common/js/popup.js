@@ -3,7 +3,7 @@
 
 domain = "https://game.mastersnakou.fr";
 apidomain = "https://wapi.wizebot.tv/api/mastersnakou";
-twitch = "https://api.twitch.tv/helix/users?login=";
+twitch = "https://api.twitch.tv/kraken/users?login=";
 live = 0;
 
 var img = null;
@@ -128,6 +128,7 @@ $(document).ready(function () {
                     var url = twitch + tab['username'];
 
                     var myHeaders = new Headers();
+                    myHeaders.append('Accept', 'application/vnd.twitchtv.v5+json');
                     myHeaders.append('Client-ID', API_key_twitch);
                     var myInit = {
                         method: 'GET',
@@ -139,18 +140,18 @@ $(document).ready(function () {
                     fetch(url, myInit)
                         .then(function (response) {
                             response.json().then(function (data) {
-                                data = data.data[0];
+                                data = data.users[0];
 
                                 var donnees = [];
-                                donnees['userid'] = data.id;
-                                donnees['logo'] = data.profile_image_url;
+                                donnees['userid'] = data._id;
+                                donnees['logo'] = data.logo;
                                 donnees['displayName'] = data.display_name;
 
                                 show_points(donnees);
                                 chrome.storage.local.set({
-                                    'logo': data.profile_image_url,
+                                    'logo': data.logo,
                                     'displayName': data.display_name,
-                                    'userid': data.id
+                                    'userid': data._id
                                 }, function () {
                                 });
                             });

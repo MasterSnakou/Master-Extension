@@ -1,7 +1,7 @@
 {
 	"name": "Snakou",
 	"description": "Ne rate plus aucun live ni aucune vidéo avec la Master Extension !",
-	"version": "2.7.1",
+	"version": "2.7.2",
 	"background": {
 		"scripts": [
 			"js/config.js",

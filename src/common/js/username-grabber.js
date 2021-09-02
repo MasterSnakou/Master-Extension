@@ -1,10 +1,11 @@
 var username = $("#username").html();
+
 if (username != []) {
     chrome.runtime.sendMessage({username: username}, function (response) {
-        //console.log("OK!");
-    })
+        window.location.replace("https://mastersnakou.wize.bot/");
+    });
 } else {
     chrome.runtime.sendMessage({username: null}, function (response) {
-        //console.log("OK!");
-    })
+        window.location.replace("https://game.mastersnakou.fr/login");
+    });
 }
