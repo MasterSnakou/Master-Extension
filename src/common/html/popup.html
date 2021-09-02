@@ -1,113 +1,116 @@
 <!DOCTYPE html>
-<html lang="FR" >
-	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>Snakou | Extension</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-        <link rel="stylesheet" href="../css/style.css">
-		 <link rel="stylesheet" href="../css/popup.css">
-    </head>
-	
-    <body class="homepage  mCustomScrollbar _mCS_1 popup">
-      <div id="mCSB_1_container" class="mCSB_container" dir="ltr">
+<html lang="FR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Snakou | Extension</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
 
-        <div class="global-overlay opacity1">
-          <div class="videoBG_wrapper">
+<body class="homepage  mCustomScrollbar _mCS_1 popup">
+<div id="mCSB_1_container" class="mCSB_container" dir="ltr">
+
+    <div class="global-overlay opacity1">
+        <div class="videoBG_wrapper">
             <div class="global-overlay opacity1">
-              <div class="overlay light-overlay skew-part">
-                <div id="stars"></div>
-                <div id="stars2"></div>
-                <div id="stars3"></div>
-              </div>
+                <div class="overlay light-overlay skew-part">
+                    <div id="stars"></div>
+                    <div id="stars2"></div>
+                    <div id="stars3"></div>
+                </div>
             </div>
-          </div>
         </div>
+    </div>
 
     <section id="left-side" class="opacity1">
-		<span id="viewersCount"></span>
-	
-		<a href="https://snakou.fr" target="_blank">
-          <img src="../images/icon128.png" alt="" class="brand-logo mCS_img_loaded" id="brand-logo-channel">
-    </a>
-    <a href="https://www.twitch.tv/mastersnakou" target="_blank" id="game_link" class="redirect trigger">
-      <img src="" alt="" id="game-logo">
-      <span id="game_uptime"></span>
-    </a>  
-    
-        
+        <span id="viewersCount"></span>
+
+        <a href="https://snakou.fr" target="_blank">
+            <img src="../images/icon128.png" alt="" class="brand-logo mCS_img_loaded" id="brand-logo-channel">
+        </a>
+        <a href="https://www.twitch.tv/mastersnakou" target="_blank" id="game_link" class="redirect trigger">
+            <img src="" alt="" id="game-logo">
+            <span id="game_uptime"></span>
+        </a>
+
+
         <div class="content">
             <nav>
                 <ul>
                     <li>
-                        <a href="https://www.twitch.tv/mastersnakou" target="_blank" id="channel_link" class="redirect action-btn action-btn-twitch trigger text-intro animated-middle fadeInUp">
-                        Twitch.tv/MasterSnakou
+                        <a href="https://www.twitch.tv/mastersnakou" target="_blank" id="channel_link"
+                           class="redirect action-btn action-btn-twitch trigger text-intro animated-middle fadeInUp">
+                            Twitch.tv/MasterSnakou
                         </a>
                     </li>
                     <li id="login" style="display:none;">
-                        <a href="https://game.mastersnakou.fr/login" target="_blank" id="mastergame-button" class="redirect action-btn trigger text-intro">
-                        Master Game
+                        <a href="https://game.mastersnakou.fr/login" target="_blank" id="mastergame-button"
+                           class="redirect action-btn trigger text-intro">
+                            Master Game
                         </a>
                     </li>
                 </ul>
             </nav>
             <a href="http://mastersnakou.wize.bot" target="_blank" class="redirect">
-              <div class="row none" id="player">
-                  <table class="center">
-                      <tr>
-                          <td style="vertical-align:middle">
-                            <img id="player-logo" class="img-circle" src="" />
-                          </td>
-                          <td style="vertical-align:middle">
-                            <span id="player-name"></span>
-                          </td>
-                          <td style="vertical-align:middle">
-                              <h4 id="player-lvl" ></h4>
-                          </td>
-                      </tr>
-                  </table>
-              </div>
+                <div class="row none" id="player">
+                    <table class="center">
+                        <tr>
+                            <td style="vertical-align:middle">
+                                <img id="player-logo" class="img-circle" src=""/>
+                            </td>
+                            <td style="vertical-align:middle">
+                                <span id="player-name"></span>
+                            </td>
+                            <td style="vertical-align:middle">
+                                <h4 id="player-lvl"></h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </a>
 
             <h1 id="live" class="text-intro animated-middle none">
-              <div id="getting-started"></div>
+                <div id="getting-started"></div>
             </h1>
-			<span id="uptime"></span>
-			<span id="title"></span>
+            <span id="uptime"></span>
+            <span id="title"></span>
         </div>
-		<div class="social-icons middle" id="social-media">
-			<a href="https://twitter.com/MasterSnakou" class="redirect" target="_blank" title="Twitter">
-				<i class="fab fa-twitter" aria-hidden="true"></i>
-			</a>
-			<a href="https://www.youtube.com/user/MasterSnakou" class="redirect" target="_blank" title="Youtube">
-				<i class="fab fa-youtube" aria-hidden="true"></i>
-			</a>
-			<a href="https://www.twitch.tv/mastersnakou/clips" class="redirect" target="_blank" title="Clips">
-				<svg id="icon_clips" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-					<path d="M14.802 7.804l-3.83 1.026 2.928 2.321 3.83-1.026-2.928-2.321zm2.895-.776l3.981-1.067.777 2.898-1.83.49-2.928-2.321zM7.969 9.635l-1.745.467L7 13l3.898-1.044-2.929-2.321zM7 13h16v9H7v-9zm1.969 3h2.785l2.228-3h-2.785l-2.228 3zm7.018 0h2.785L21 13h-2.785l-2.228 3z"></path>
-				</svg>
-			</a>
-			<a href="https://www.instagram.com/mastersnakou/" class="redirect" target="_blank" title="Instagram">
-				<i class="fab fa-instagram" aria-hidden="true"></i>
-			</a>
-			<a href="https://fr-fr.facebook.com/MasterSnakou/" class="redirect" target="_blank" title="Facebook">
-				<i class="fab fa-facebook" aria-hidden="true"></i>
-			</a>
-			<a title="Snapchat" id="snapchat">
-				<i class="fab fa-snapchat-square" aria-hidden="true"></i>
-			</a>
-			<a href="https://snakou.fr/" class="redirect" target="_blank" title="Mon site">
-				<i class="fas fa-globe" aria-hidden="true"></i>
-			</a>
-			  <a title="TeamSpeak" id="ts">
-						<i class="fas fa-microphone" aria-hidden="true"></i>
-			  </a>
-			  <a href="https://discord.gg/CJSBm8R" class="redirect" class="redirect" target="_blank" title="Discord">
-						<i class="fab fa-discord" aria-hidden="true"></i>
-			  </a>
-			<a href="html/options.html" class="redirect" target="_blank" title="Options" id="options">
-				<i class="fas fa-wrench" aria-hidden="true"></i>
-			</a>
-		  </div>
+        <div class="social-icons middle" id="social-media">
+            <a href="https://twitter.com/MasterSnakou" class="redirect" target="_blank" title="Twitter">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.youtube.com/user/MasterSnakou" class="redirect" target="_blank" title="Youtube">
+                <i class="fab fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.twitch.tv/mastersnakou/clips" class="redirect" target="_blank" title="Clips">
+                <svg id="icon_clips" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.802 7.804l-3.83 1.026 2.928 2.321 3.83-1.026-2.928-2.321zm2.895-.776l3.981-1.067.777 2.898-1.83.49-2.928-2.321zM7.969 9.635l-1.745.467L7 13l3.898-1.044-2.929-2.321zM7 13h16v9H7v-9zm1.969 3h2.785l2.228-3h-2.785l-2.228 3zm7.018 0h2.785L21 13h-2.785l-2.228 3z"></path>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/mastersnakou/" class="redirect" target="_blank" title="Instagram">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://fr-fr.facebook.com/MasterSnakou/" class="redirect" target="_blank" title="Facebook">
+                <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a title="Snapchat" id="snapchat">
+                <i class="fab fa-snapchat-square" aria-hidden="true"></i>
+            </a>
+            <a href="https://snakou.fr/" class="redirect" target="_blank" title="Mon site">
+                <i class="fas fa-globe" aria-hidden="true"></i>
+            </a>
+            <a title="TeamSpeak" id="ts">
+                <i class="fas fa-microphone" aria-hidden="true"></i>
+            </a>
+            <a href="https://discord.gg/CJSBm8R" class="redirect" class="redirect" target="_blank" title="Discord">
+                <i class="fab fa-discord" aria-hidden="true"></i>
+            </a>
+            <a href="html/options.html" class="redirect" target="_blank" title="Options" id="options">
+                <i class="fas fa-wrench" aria-hidden="true"></i>
+            </a>
+        </div>
     </section>
 
     <script src="../libs/jquery.min.js"></script>
@@ -116,6 +119,6 @@
     <script src="../js/popup.js"></script>
     <script src="../libs/jquery.countdown.min.js"></script>
 
-  </div>
+</div>
 </body>
 </html>

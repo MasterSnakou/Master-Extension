@@ -1,125 +1,128 @@
 <!DOCTYPE html>
-<html lang="FR" >
+<html lang="FR">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>Snakou | Options</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/options.css">
+    <link rel="stylesheet" href="../css/options.css">
 </head>
 
 <body class="homepage-options">
 
-	<!-- Overlay and Star effect -->
-	<div class="global-overlay opacity1">
-        <div class="videoBG_wrapper">
-            <div class="global-overlay opacity1">
-              <div class="overlay light-overlay skew-part">
+<!-- Overlay and Star effect -->
+<div class="global-overlay opacity1">
+    <div class="videoBG_wrapper">
+        <div class="global-overlay opacity1">
+            <div class="overlay light-overlay skew-part">
                 <div id="stars"></div>
                 <div id="stars2"></div>
                 <div id="stars3"></div>
-              </div>
             </div>
         </div>
     </div>
-	<div class="videoBG">
-		<video poster="" autoplay="autoplay" src="https://snakou.fr/theme/frontend/img/video.webm" loop ></video>
-	</div>
-	
-<!-- START -->
-		<div class="GridMaster opacity1">
-            <div class="logo-options"><img src="../images/icon128.png" alt=""></div>
-            <div class="title-options"><h1 id="titleOptions">Options de la Master Extension</h1><hr id="separator" align="left"/></div>
+</div>
+<div class="videoBG">
+    <video poster="" autoplay="autoplay" src="https://snakou.fr/theme/frontend/img/video.webm" loop></video>
+</div>
 
-            <form id="form-options" class="form-signin">
-                <div class="flex-container">
-                    <div class="labelNotif">Notification de live</div>
-                    <div id="notifL" class="trigger" data-toggle="buttons">
-                        <label class="switch active">
-                            <input type="checkbox" name="options" id="notifLC" checked>
-                            <span class="slider round"></span>
-                        </label>         
-                    </div>
-                    <div id="songL" class="trigger mute" data-toggle="buttons">
-                        <label class="song btn btn-lg active">
-                            <input type="checkbox" name="options" id="songLC" autocomplete="off" checked />
-                            <i class="fas fa-volume-up"></i>
-                        </label>          
-                    </div>
-                </div>
-                <div class="flex-container">
-                        <div class="labelNotif">Notification de changement de jeu</div>
-                        <div id="notifG" class="trigger" data-toggle="buttons">
-                            <label class="switch inactive">
-                                <input type="checkbox" name="options" id="notifGC">
-                                <span class="slider round"></span>
-                            </label>						
-                        </div>
-                        <div id="songG" class="trigger mute" data-toggle="buttons">
-                            <label class="song btn btn-lg mute inactive">
-                                <input type="checkbox" name="options" id="songGC" autocomplete="off"/>
-                                <i class="fas fa-volume-off"></i>
-                            </label>          
-                        </div>
-                </div>
-                <div class="flex-container">
-                        <div class="labelNotif">Notification de vidéo (MasterSnakou)</div>
-                        <div id="notifV" class="trigger" data-toggle="buttons">
-                            <label class="switch active">
-                                <input type="checkbox" name="options" id="notifVC" checked>
-                                <span class="slider round"></span>
-                            </label>      
-                        </div>
-                        <div id="songV" class="trigger mute" data-toggle="buttons">
-                            <label class="song btn btn-lg active">
-                                <input type="checkbox" name="options" id="songVC" autocomplete="off" checked />
-                                <i class="fas fa-volume-up"></i>
-                            </label>          
-                        </div>
-                </div>
-                <div class="flex-container">
-                    <div class="labelNotif">Notification de vidéo (SnakouReplay)</div>
-                    <div id="notifVR" class="trigger" data-toggle="buttons">
-                        <label class="switch active">
-                            <input type="checkbox" name="options" id="notifVRC" checked>
-                            <span class="slider round"></span>
-                        </label>      
-                    </div>
-                    <div id="songVR" class="trigger mute" data-toggle="buttons">
-                        <label class="song btn btn-lg active">
-                            <input type="checkbox" name="options" id="songVRC" autocomplete="off" checked />
-                            <i class="fas fa-volume-up"></i>
-                        </label>          
-                    </div>
-                </div>
-                <div class="flex-container">
-                    <div class="labelNotif">Notification de date de resub</div>
-                    <div id="notifRS" class="trigger" data-toggle="buttons">
-                        <label class="switch active">
-                            <input type="checkbox" name="options" id="notifRSC" checked>
-                            <span class="slider round"></span>
-                        </label>      
-                    </div>
-                    <div id="resubRS" class="trigger mute" data-toggle="buttons">
-                        <label class="resub btn btn-lg active">
-                            <input type="date" name="options" id="resubRSC" autocomplete="off" checked />
-                        </label>          
-                    </div>
+<!-- START -->
+<div class="GridMaster opacity1">
+    <div class="logo-options"><img src="../images/icon128.png" alt=""></div>
+    <div class="title-options"><h1 id="titleOptions">Options de la Master Extension</h1>
+        <hr id="separator" align="left"/>
+    </div>
+
+    <form id="form-options" class="form-signin">
+        <div class="flex-container">
+            <div class="labelNotif">Notification de live</div>
+            <div id="notifL" class="trigger" data-toggle="buttons">
+                <label class="switch active">
+                    <input type="checkbox" name="options" id="notifLC" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
-                <label for="baseurl">Site web utilisé pour les redirections vers le live : </label>
-                <select class="form-control width35" name="baseurl" id="baseurl">
-                    <option value="https://www.twitch.tv/">Twitch</option>
-                    <option value="https://multitwitch.tv/">MultiTwitch</option>
-                    <option value="https://speedrun.tv/">Speedrun.tv</option>
-                    <option value="https://kadgar.net/live/">Kadgar.net</option>
-                </select>
-                <br/>
-                <button type="button" class="btn btn-lg btn-primary" id="save-cfg">Enregistrer</button>
-                <button type="button" class="btn btn-lg btn-warning" id="quit-tab">Quitter</button>
-            </form>
-            <div id="support">Pour tout feedback (bug ou suggestion), créez un ticket sur le <a href="https://github.com/MasterSnakou/Master-Extension/issues">Github de l'extension</a></div>
+            <div id="songL" class="trigger mute" data-toggle="buttons">
+                <label class="song btn btn-lg active">
+                    <input type="checkbox" name="options" id="songLC" autocomplete="off" checked/>
+                    <i class="fas fa-volume-up"></i>
+                </label>
+            </div>
         </div>
+        <div class="flex-container">
+            <div class="labelNotif">Notification de changement de jeu</div>
+            <div id="notifG" class="trigger" data-toggle="buttons">
+                <label class="switch inactive">
+                    <input type="checkbox" name="options" id="notifGC">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="songG" class="trigger mute" data-toggle="buttons">
+                <label class="song btn btn-lg mute inactive">
+                    <input type="checkbox" name="options" id="songGC" autocomplete="off"/>
+                    <i class="fas fa-volume-off"></i>
+                </label>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="labelNotif">Notification de vidéo (MasterSnakou)</div>
+            <div id="notifV" class="trigger" data-toggle="buttons">
+                <label class="switch active">
+                    <input type="checkbox" name="options" id="notifVC" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="songV" class="trigger mute" data-toggle="buttons">
+                <label class="song btn btn-lg active">
+                    <input type="checkbox" name="options" id="songVC" autocomplete="off" checked/>
+                    <i class="fas fa-volume-up"></i>
+                </label>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="labelNotif">Notification de vidéo (SnakouReplay)</div>
+            <div id="notifVR" class="trigger" data-toggle="buttons">
+                <label class="switch active">
+                    <input type="checkbox" name="options" id="notifVRC" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="songVR" class="trigger mute" data-toggle="buttons">
+                <label class="song btn btn-lg active">
+                    <input type="checkbox" name="options" id="songVRC" autocomplete="off" checked/>
+                    <i class="fas fa-volume-up"></i>
+                </label>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="labelNotif">Notification de date de resub</div>
+            <div id="notifRS" class="trigger" data-toggle="buttons">
+                <label class="switch active">
+                    <input type="checkbox" name="options" id="notifRSC" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="resubRS" class="trigger mute" data-toggle="buttons">
+                <label class="resub btn btn-lg active">
+                    <input type="date" name="options" id="resubRSC" autocomplete="off" checked/>
+                </label>
+            </div>
+        </div>
+        <label for="baseurl">Site web utilisé pour les redirections vers le live : </label>
+        <select class="form-control width35" name="baseurl" id="baseurl">
+            <option value="https://www.twitch.tv/">Twitch</option>
+            <option value="https://multitwitch.tv/">MultiTwitch</option>
+            <option value="https://speedrun.tv/">Speedrun.tv</option>
+            <option value="https://kadgar.net/live/">Kadgar.net</option>
+        </select>
+        <br/>
+        <button type="button" class="btn btn-lg btn-primary" id="save-cfg">Enregistrer</button>
+        <button type="button" class="btn btn-lg btn-warning" id="quit-tab">Quitter</button>
+    </form>
+    <div id="support">Pour tout feedback (bug ou suggestion), créez un ticket sur le <a
+            href="https://github.com/MasterSnakou/Master-Extension/issues">Github de l'extension</a></div>
+</div>
 </body>
 <script src="/libs/jquery.min.js"></script>
 <script type="text/javascript" src="../js/config.js"></script>
